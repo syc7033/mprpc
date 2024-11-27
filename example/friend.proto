@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package fixbug;
+
+option cc_generic_services = true;
+
+message ResultCode
+{
+    int32 errcode = 1;
+    bytes errmsg = 2;
+}
+
+// rpc方法的请求参数
+message GetFriendListRequest
+{
+    int32 userid = 1;
+}
+
+// rpc方法的响应
+message GetFriendListResponse
+{
+    ResultCode result = 1;
+    repeated bytes friends = 2; // 一个好友列表
+}
+
+// rpc方法的描述
+service FriendServiceRpc
+{
+    rpc GetFriendList(GetFriendListRequest) returns(GetFriendListResponse);
+}

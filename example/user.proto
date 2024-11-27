@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package fixbug;
+
+option cc_generic_services = true; // 要使用service类必须加该可选项
+
+message ResultCode
+{
+    int32 errcode = 1;
+    bytes errmsg = 2;
+}
+
+// rpc方法参数类型
+message LoginReq 
+{
+    bytes name = 1;
+    bytes pwd = 2;
+}
+
+// rpc方法返回值类型
+message LoginRsp // 返回值
+{
+    ResultCode result = 1;
+    bool sucess = 2;
+}
+
+// rpc方法的请求参数
+message RegisterReq
+{
+    uint32 id = 1;
+    bytes name = 2;
+    bytes pwd = 3;
+}
+
+// rpc方法的响应
+message RegisterRsp
+{
+    ResultCode result = 1;
+    bool success = 2;
+}
+
+// 定义 rpc方法的描述(标识) 这些都是由我们rpc方法的提供方发布的 => protoc => 生成对应的cpp服务类 和 服务方法
+service UserServiceRpc
+{
+    rpc Login(LoginReq) returns(LoginRsp);
+    rpc Register(RegisterReq) returns(RegisterRsp);
+}
+
+// protoc user.proto --cpp_out=./ => 根据.proto配置文件 生成 对应的CPP代码

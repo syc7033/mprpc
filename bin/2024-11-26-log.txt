@@ -1,0 +1,11 @@
+21:17:34 =>[info] service_name:FriendServiceRpc
+21:17:34 =>[info] method_name: GetFriendList
+21:17:34 =>[info] RpcProvider start service at ip: 127.0.0.1 port: 8000
+21:17:34 =>[info] ============================================
+21:17:39 =>[info] header_size: 35
+21:17:39 =>[info] rpc_header_str: 
+FriendServiceRpcGetFriendList
+21:17:39 =>[info] service_name: FriendServiceRpc
+21:17:39 =>[info] method_name: GetFriendList
+21:17:39 =>[info] args_str: 
+21:17:39 =>[info] ============================================
